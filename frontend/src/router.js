@@ -3,6 +3,7 @@ import Board from './pages/Board.vue'
 import Ingest from './pages/Ingest.vue'
 import Quarantine from './pages/Quarantine.vue'
 import Sidecar from './pages/Sidecar.vue'
+import Conflicts from './pages/Conflicts.vue'
 import Proofs from './pages/Proofs.vue'
 
 export default createRouter({
@@ -12,6 +13,7 @@ export default createRouter({
     { path: '/ingest', component: Ingest },
     { path: '/quarantine', component: Quarantine },
     { path: '/sidecar', component: Sidecar },
+    { path: '/conflicts', component: Conflicts },
     { path: '/proofs', component: Proofs },
   ],
 })

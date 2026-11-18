@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
 from app.db import connect
+from app.modules.dual_carrier_conflict import proofs as conflict_proofs
 from app.services import ingest as ingest_svc
 from app.services import timeline as timeline_svc
 
@@ -49,10 +50,12 @@ def waybill_timeline(waybill_id: str):
             "SELECT * FROM status_proofs WHERE waybill_id=? ORDER BY id DESC LIMIT 1",
             (waybill_id,),
         ).fetchone()
+        conflicts = conflict_proofs.conflicts_for_waybill(conn, waybill_id)
         return {
             "waybill": dict(wb),
             "hops": hops,
             "proof": dict(proof) if proof else None,
+            "conflicts": conflicts,
         }
     finally:
         conn.close()

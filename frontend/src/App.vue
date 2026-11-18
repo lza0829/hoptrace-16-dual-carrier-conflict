@@ -27,6 +27,7 @@ onMounted(async () => {
         <router-link to="/ingest">装载</router-link>
         <router-link to="/sidecar">旁路</router-link>
         <router-link to="/quarantine">隔离</router-link>
+        <router-link to="/conflicts">冲突</router-link>
         <router-link to="/proofs">证明</router-link>
       </nav>
       <div class="pulse" :class="{ ok: health?.正常 }">

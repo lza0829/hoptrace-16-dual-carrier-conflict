@@ -18,6 +18,8 @@ export const api = {
   quarantine: () => req('/api/quarantine'),
   sidecar: () => req('/api/sidecar'),
   ingest: () => req('/api/ingest/run', { method: 'POST' }),
+  conflicts: () => req('/api/conflicts'),
+  conflict: (id) => req(`/api/conflicts/${encodeURIComponent(id)}`),
   proofs: (waybillId) =>
     req(waybillId ? `/api/status-proofs?waybill_id=${encodeURIComponent(waybillId)}` : '/api/status-proofs'),
 }

@@ -35,6 +35,11 @@ watch(selected, (id) => {
 
 const hops = computed(() => detail.value?.hops || [])
 const proof = computed(() => detail.value?.proof)
+const conflicts = computed(() => detail.value?.conflicts || [])
+
+function axisLabel(c) {
+  return c.axis_type === 'seq' ? `同序 #${c.axis_value}` : `同时间窗 ${c.axis_value}`
+}
 </script>
 
 <template>
@@ -93,6 +98,17 @@ const proof = computed(() => detail.value?.proof)
           <dt>写入</dt><dd>{{ proof.created_at }}</dd>
         </dl>
         <p v-else class="muted">暂无证明</p>
+        <h2>双源冲突</h2>
+        <template v-if="conflicts.length">
+          <div class="conflict-chip" v-for="c in conflicts" :key="c.id">
+            <span class="cid">{{ c.id }}</span>
+            <span>{{ axisLabel(c) }}</span>
+            <span class="muted">
+              {{ c.sources.join(' ↔ ') }} · 分歧 {{ c.divergent_fields.join(' / ') }} · 整组隔离
+            </span>
+          </div>
+        </template>
+        <p v-else class="muted">无冲突组</p>
       </aside>
 
       <footer class="pane dot-rail">

@@ -1,24 +1,88 @@
 {
-  "batch_id": "B-DEMO-01",
-  "cutoff_ts": "2026-11-17T20:00:00Z",
+  "batch_id": "B-DUAL-01",
+  "cutoff_ts": "2026-11-17T21:00:00Z",
+  "conflict_window_seconds": 0,
+  "sources": ["carrier_alpha", "carrier_beta"],
   "hops": [
     {
-      "id": "H-5",
+      "id": "H-A1",
       "waybill_id": "WB-1001",
       "waybill_title": "华东干线样件",
+      "source": "carrier_alpha",
       "event_ts": "2026-11-17T19:20:00Z",
       "location_code": "HZ-STATION",
       "event_code": "OUT_FOR_DELIVERY",
       "seq": 4
     },
     {
-      "id": "H-6",
+      "id": "H-B1",
+      "waybill_id": "WB-1001",
+      "waybill_title": "华东干线样件",
+      "source": "carrier_beta",
+      "event_ts": "2026-11-17T19:35:00Z",
+      "location_code": "HZ-HUB",
+      "event_code": "ARRIVED_HUB",
+      "seq": 4
+    },
+    {
+      "id": "H-A2",
       "waybill_id": "WB-1002",
       "waybill_title": "同城急送样件",
+      "source": "carrier_alpha",
       "event_ts": "2026-11-17T10:00:00Z",
       "location_code": "SH-LOCAL",
       "event_code": "OUT_FOR_DELIVERY",
       "seq": 2
+    },
+    {
+      "id": "H-B2",
+      "waybill_id": "WB-1002",
+      "waybill_title": "同城急送样件",
+      "source": "carrier_beta",
+      "event_ts": "2026-11-17T10:00:00Z",
+      "location_code": "SH-LOCAL",
+      "event_code": "OUT_FOR_DELIVERY",
+      "seq": 2
+    },
+    {
+      "id": "H-B3",
+      "waybill_id": "WB-1002",
+      "waybill_title": "同城急送样件",
+      "source": "carrier_beta",
+      "event_ts": "2026-11-17T11:30:00Z",
+      "location_code": "SH-LOCAL",
+      "event_code": "DELIVERED",
+      "seq": 3
+    },
+    {
+      "id": "H-A3",
+      "waybill_id": "WB-1003",
+      "waybill_title": "华南双源样件",
+      "source": "carrier_alpha",
+      "event_ts": "2026-11-17T14:00:00Z",
+      "location_code": "GZ-HUB",
+      "event_code": "PICKED",
+      "seq": 1
+    },
+    {
+      "id": "H-A4",
+      "waybill_id": "WB-1003",
+      "waybill_title": "华南双源样件",
+      "source": "carrier_alpha",
+      "event_ts": "2026-11-17T15:00:00Z",
+      "location_code": "GZ-HUB",
+      "event_code": "IN_TRANSIT",
+      "seq": 2
+    },
+    {
+      "id": "H-B4",
+      "waybill_id": "WB-1003",
+      "waybill_title": "华南双源样件",
+      "source": "carrier_beta",
+      "event_ts": "2026-11-17T15:00:00Z",
+      "location_code": "CAN-APRON",
+      "event_code": "IN_TRANSIT",
+      "seq": 3
     }
   ]
 }

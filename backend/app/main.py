@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import seed
+from app.modules.dual_carrier_conflict.router import router as conflict_router
 from app.routers import api
 
 app = FastAPI(title="途迹 Hoptrace", version="0.1.0")
@@ -19,6 +20,7 @@ def _startup():
 
 
 app.include_router(api)
+app.include_router(conflict_router)
 
 
 @app.get("/api/health")
